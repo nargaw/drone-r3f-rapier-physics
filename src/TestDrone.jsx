@@ -30,28 +30,28 @@ export default function TestDrone()
     const STIFFNESS = 150000
     const DAMPING = 2
     const joint = useRevoluteJoint(obj, roterTopLeft, [
-        [-0.5 , 0, -1],
-        [0, 0, 0],
-        [0, 2, 0]
+        [-0.0 , 0, -1],
+        [0.25, 0, 0],
+        [0, 1, 0]
     ])
 
-    // const joint2 = useRevoluteJoint(obj, roterTopRight, [
-    //     [0.5, 0., -1],
-    //     [0, 0, 0],
-    //     [0, 1, 0]
-    // ])
+    const joint2 = useRevoluteJoint(obj, roterTopRight, [
+        [0.5, 0., -1],
+        [0, 0, 0],
+        [0, 1, 0]
+    ])
 
-    // const joint3 = useRevoluteJoint(obj, roterBottomLeft, [
-    //     [0, 0, 0],
-    //     [-1, 1, 1],
-    //     [0, 1, 0]
-    // ])
+    const joint3 = useRevoluteJoint(obj, roterBottomLeft, [
+        [-0.5, 0, 1],
+        [0, 0, 0],
+        [0, 1, 0]
+    ])
 
-    // const joint4 = useRevoluteJoint(obj, roterBottomRight, [
-    //     [0, 0, 0],
-    //     [1, 1, 1],
-    //     [0, 1, 0]
-    // ])
+    const joint4 = useRevoluteJoint(obj, roterBottomRight, [
+        [0.5, 0, 1],
+        [0, 0, 0],
+        [0, 1, 0]
+    ])
 
     const fixedJointLeft = useFixedJoint(obj, landingLeft, [
         [0, 0, 0],
@@ -169,25 +169,25 @@ export default function TestDrone()
                     </RigidBody>
                     <RigidBody ref={roterBottomRight}>
                         <mesh position={[0.5, 0.2, 0.5]} > 
-                            <boxGeometry args={[0.1, 0.01, 0.75]} />
+                            <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='green' />
                         </mesh>
                     </RigidBody>
                     <RigidBody ref={roterBottomLeft}>
                         <mesh position={[-0.5, 0.2, 0.5]} > 
-                            <boxGeometry args={[0.1, 0.01, 0.75]} />
+                            <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='red' />
                         </mesh>
                     </RigidBody>
                     <RigidBody ref={roterTopRight}>
                         <mesh position={[0.5, 0.2, -0.5]} > 
-                            <boxGeometry args={[0.1, 0.01, 0.75]} />
+                            <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='orange' />
                         </mesh>
                     </RigidBody>
                     <RigidBody ref={roterTopLeft}>
                         <mesh position={[-0.5, 0.2, -0.5]} > 
-                            <boxGeometry args={[0.1, 0.01, 0.75]} />
+                            <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='blue' />
                         </mesh>
                     </RigidBody>
