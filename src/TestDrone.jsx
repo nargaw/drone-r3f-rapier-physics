@@ -167,13 +167,13 @@ export default function TestDrone()
                             <meshNormalMaterial />
                         </mesh>
                     </RigidBody>
-                    <RigidBody ref={roterBottomRight}>
+                    <RigidBody ref={roterBottomRight} lockRotations>
                         <mesh position={[0.5, 0.2, 0.5]} > 
                             <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='green' />
                         </mesh>
                     </RigidBody>
-                    <RigidBody ref={roterBottomLeft}>
+                    <RigidBody ref={roterBottomLeft} lockRotations>
                         <mesh position={[-0.5, 0.2, 0.5]} > 
                             <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='red' />
@@ -185,7 +185,7 @@ export default function TestDrone()
                             <meshStandardMaterial color='orange' />
                         </mesh>
                     </RigidBody>
-                    <RigidBody ref={roterTopLeft}>
+                    <RigidBody ref={roterTopLeft} lockRotations>
                         <mesh position={[-0.5, 0.2, -0.5]} > 
                             <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='blue' />
