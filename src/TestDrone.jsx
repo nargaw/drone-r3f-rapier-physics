@@ -20,6 +20,7 @@ export default function TestDrone()
     
     const jump = () => {
         // console.log(obj.current)
+        obj.current?.wakeUp()
         obj.current.applyImpulse({x: 0, y:2, z: -5})
         obj.current.applyTorqueImpulse({ x: Math.random() - 0.5, y: Math.random() - 0.5, z: Math.random() - 0.5 })
     }
@@ -28,10 +29,11 @@ export default function TestDrone()
     const [ smoothedCameraTarget ] = useState(() => new THREE.Vector3())
 
     const STIFFNESS = 150000
-    const DAMPING = 2
+    const DAMPING = 0.1
+
     const joint = useRevoluteJoint(obj, roterTopLeft, [
-        [-0.0 , 0, -1],
-        [0.25, 0, 0],
+        [-0.5 , 0, -1],
+        [0, 0, 0],
         [0, 1, 0]
     ])
 
@@ -70,7 +72,7 @@ export default function TestDrone()
     
     useEffect(() => {
         console.log(joint.current)
-        // joint.current?.configureMotorPosition(0.3, STIFFNESS, DAMPING)
+        joint.current?.configureMotorPosition(0.3, STIFFNESS, DAMPING)
         
     })
   
@@ -167,13 +169,13 @@ export default function TestDrone()
                             <meshNormalMaterial />
                         </mesh>
                     </RigidBody>
-                    <RigidBody ref={roterBottomRight} lockRotations>
+                    <RigidBody ref={roterBottomRight} >
                         <mesh position={[0.5, 0.2, 0.5]} > 
                             <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='green' />
                         </mesh>
                     </RigidBody>
-                    <RigidBody ref={roterBottomLeft} lockRotations>
+                    <RigidBody ref={roterBottomLeft} >
                         <mesh position={[-0.5, 0.2, 0.5]} > 
                             <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='red' />
@@ -185,13 +187,13 @@ export default function TestDrone()
                             <meshStandardMaterial color='orange' />
                         </mesh>
                     </RigidBody>
-                    <RigidBody ref={roterTopLeft} lockRotations>
+                    <RigidBody ref={roterTopLeft} >
                         <mesh position={[-0.5, 0.2, -0.5]} > 
                             <boxGeometry args={[0.1, 0.01, 0.25]} />
                             <meshStandardMaterial color='blue' />
                         </mesh>
                     </RigidBody>
-                    <RigidBody ref={obj} onClick={jump}>
+                    <RigidBody ref={obj} onClick={jump} lockRotations>
                         <mesh castShadow >
                             <boxGeometry args={[1, 0.2, 1]}/>
                             <meshNormalMaterial />
